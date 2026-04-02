@@ -115,7 +115,7 @@
     table-layout: fixed;
     font-family: sans-serif;
     /* szintaxis: clamp(minimum, dinamikus_érték, maximum) */
-    font-size: clamp(7px, 5vw, 11px);
+    font-size: clamp(5px, 5vw, 11px);
 }
 
 
