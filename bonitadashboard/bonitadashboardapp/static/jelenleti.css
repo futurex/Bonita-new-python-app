@@ -19,7 +19,6 @@
 }
 
 
-
 .menu-kontener {
     display: flex;
     align-items: center;
@@ -115,7 +114,8 @@
     max-width: 100%;
     table-layout: fixed;
     font-family: sans-serif;
-    font-size: 12px;
+    /* szintaxis: clamp(minimum, dinamikus_érték, maximum) */
+    font-size: clamp(7px, 5vw, 11px);
 }
 
 
@@ -147,7 +147,6 @@ th {
     width: 160px;
     /* Fix szélesség a név oszlopnak */
 }
-
 
 .nev-oszlop {
     text-align: left;
