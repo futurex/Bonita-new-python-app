@@ -4,5 +4,71 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f5f5f5;
     margin: 0;
-    font-size: 12px;
+
+}
+
+/* Konténer, ami csak szükség esetén görget */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    /* Megakadályozza, hogy túl kicsire ugorjon össze */
+
+    /* Dinamikus betűméret: 
+     Minimum 10px, az ablakméret 1%-a, maximum 14px */
+    font-size: clamp(8px, 1vw + 2px, 14px);
+    font-family: sans-serif;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+thead th {
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Az első oszlop (nevek) rögzítése görgetésnél */
+.sticky-col {
+    position: sticky;
+    left: 0;
+    background-color: #fff;
+    z-index: 1;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+    box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobil optimalizálás */
+@media (max-width: 600px) {
+    table {
+        /* Mobilon még kisebb alapméret, hogy több oszlop látsszon */
+        font-size: 11px;
+    }
+
+    th,
+    td {
+        padding: 6px 2px;
+    }
+
+    .sticky-col {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

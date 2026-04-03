@@ -22,45 +22,30 @@
     </div>
 
 
-    <div class="jelenleti-table-wrap">
-        <table id="jelenletiTable" style="--napok-szama: {{ napok|length }};">
-            <colgroup>
-                <col class="nev-col">
-                {% for nap in napok %}
-                <col class="nap-col">
-                {% endfor %}
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>Név</th>
-                    {% for nev in nap_nevek %}
-                    <th class="nap">{{ nev }}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <th>
-                        <!-- dolgozó hozzáadása - + gomb -->
-                        <button type="button" class="plus-nyito-gomb" onclick="openDolgozoModal()">+</button>
-                    </th>
-                    {% for nap in napok %}
-                    <th>{{ nap }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for adat in tabla_adat %}
-                <tr>
-                    <td class="nev-oszlop" data-id="{{adat.id}}" data-nev="{{ adat.nev }}">{{ adat.nev }}</td>
-                    {% for nap, ido in adat.napok.items %}
-                    <td>
-                        <div class="click-box" data-ido="{{nap}}">{{ ido }}</div>
-                    </td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Név</th> <!-- első oszlop a NÉV -->
+        {% for nap in napok %}
+            <th>{{ nap }}</th> <!-- Napok száma -->
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sticky-col">Kovács János</td>
+        <td>A</td><td>B</td><td></td><td>A</td><td></td><td></td><td>A</td><td>A</td><td>B</td><td></td>
+        <td>A</td><td>B</td><td></td><td>A</td><td></td><td></td><td>A</td><td>A</td><td>B</td><td></td>
+      </tr>
+      <tr>
+        <td class="sticky-col">Nagy Anna</td>
+        <td>B</td><td>B</td><td>A</td><td></td><td>A</td><td></td><td>B</td><td></td><td>A</td><td>B</td>
+        <td>B</td><td>B</td><td>A</td><td></td><td>A</td><td></td><td>B</td><td></td><td>A</td><td>B</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     
 </body> 
 </html>
