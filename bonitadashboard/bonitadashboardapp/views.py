@@ -1,11 +1,19 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login
+from django.db.utils import OperationalError, ProgrammingError
 
 def index(request):
     if request.method == 'POST':
         username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
+        try:
+            user = authenticate(request, username=username, password=password)
+        except (OperationalError, ProgrammingError) as exc:
+            if "auth_user" in str(exc):
+                return render(request, "bonitadashboardapp/index.html", {
+                    "error": "Az adatbazis inicializalasa hianyzik. Futtasd: python manage.py migrate"
+                })
+            raise
 
         if user is not None:
             print("User is valid!")

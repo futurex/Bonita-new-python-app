@@ -31,6 +31,9 @@
 		      	<div class="d-flex">
 		      		<div class="w-100">
 		      			<h3 class="mb-4">Bejelentkezés</h3>
+		      			{% if error %}
+		      			<div class="alert alert-danger" role="alert">{{ error }}</div>
+		      			{% endif %}
 		      		</div>
 							<!-- <div class="w-100">
 								<p class="social-media d-flex justify-content-end">
