@@ -7,18 +7,29 @@ body {
 
 }
 
+/* A dashboard layout alapból levágja a vízszintes túlcsordulást,
+   ezt ezen az oldalon felülírjuk. */
+.main-content {
+    overflow-x: auto;
+}
+
 /* Konténer, ami csak szükség esetén görget */
 .table-container {
+    display: block;
     width: 100%;
-    overflow-x: auto;
+    max-width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable both-edges;
     border: 1px solid #ddd;
     border-radius: 8px;
 }
 
 table {
-    width: 100%;
+    width: max-content;
+    min-width: 100%;
     border-collapse: collapse;
-    min-width: 600px;
     /* Megakadályozza, hogy túl kicsire ugorjon össze */
 
     /* Dinamikus betűméret: 
@@ -58,7 +69,7 @@ thead th {
 @media (max-width: 600px) {
     table {
         /* Mobilon még kisebb alapméret, hogy több oszlop látsszon */
-        font-size: 11px;
+        font-size: 8px;
     }
 
     th,
