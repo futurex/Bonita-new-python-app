@@ -4,50 +4,54 @@
 
 
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'jelenleti.css' %}">
-
+    <link rel="stylesheet" href="{% static 'vegyes.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Jelenléti</title>
 </head>
 
 <body>
 
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <input type="hidden" id="aktualis-ev" value="{{ ev }}">
+    <input type="hidden" id="aktualis-honap" value="{{ honap_szam }}">
+
+  <div class="jelenleti-layout">
     <div class="fejlec">
-            <a class="honap-nav" href="?ev={{ elozo_ev }}&honap={{ elozo_honap }}" aria-label="Előző hónap">&lsaquo;</a>
-            <span class="fejlec-cim">Jelenléti adatok - {{ ev }} {{ honap }}</span>
-            <a class="honap-nav" href="?ev={{ kovetkezo_ev }}&honap={{ kovetkezo_honap }}"
-                aria-label="Következő hónap">&rsaquo;</a>
+        <span class="fejlec-cim">Jelenléti adatok</span>
+        <a class="honap-nav" href="?ev={{ elozo_ev }}&honap={{ elozo_honap }}" aria-label="Előző hónap"><i
+                class="fa-solid fa-angles-left"></i></a>
+        <a class="honap-nav" href="?ev={{ kovetkezo_ev }}&honap={{ kovetkezo_honap }}" aria-label="Következő hónap"><i
+                class="fa-solid fa-angles-right"></i></a>
+    </div>
+
+   <div class="dashboard-card">
+    <div class="card-header">
+      <div class="title-group">
+        <h3>My activity</h3>
+        <p>What is waiting for you today</p>
+      </div>
+    <div class="calendar-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    </div>
+
+  <div class="content-layer">
+    <div class="timeline-placeholder">
+      [Idővonal és naptár sávok helye]
+    </div>
+  </div>
+</div>
     </div>
 
 
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Név</th> <!-- első oszlop a NÉV -->
-        {% for nap in napok %}
-            <th>{{ nap }}</th> <!-- Napok száma -->
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="sticky-col">Kovács János</td>
-        <td>A</td><td>B</td><td></td><td>A</td><td></td><td></td><td>A</td><td>A</td><td>B</td><td></td>
-        <td>A</td><td>B</td><td></td><td>A</td><td></td><td></td><td>A</td><td>A</td><td>B</td><td></td>
-      </tr>
-      <tr>
-        <td class="sticky-col">Nagy Anna</td>
-        <td>B</td><td>B</td><td>A</td><td></td><td>A</td><td></td><td>B</td><td></td><td>A</td><td>B</td>
-        <td>B</td><td>B</td><td>A</td><td></td><td>A</td><td></td><td>B</td><td></td><td>A</td><td>B</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-    
-</body> 
+    {{ tablaErkezesTavozas|json_script:"user-data-json" }}
+</body>
+
 </html>
 
-{% endblock %}  
+{% endblock %}

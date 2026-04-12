@@ -1,74 +1,149 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap');
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-
-}
-
-/* Konténer, ami csak szükség esetén görget */
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
-    /* Megakadályozza, hogy túl kicsire ugorjon össze */
-
-    /* Dinamikus betűméret: 
-     Minimum 10px, az ablakméret 1%-a, maximum 14px */
-    font-size: clamp(8px, 1vw + 2px, 14px);
-    font-family: sans-serif;
-}
-
-th,
-td {
-    border: 1px solid #ccc;
-    padding: 8px 4px;
+.fejlec {
+    /* background: radial-gradient(circle at 20% 30%, #315757 0%, #0d1616 100%); */
+    color: #2d2d2d;
+    
     text-align: center;
-    white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    border-radius: 10px;
+    font-family: 'General Sans', sans-serif;
 }
 
-thead th {
-    background-color: #f4f4f4;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-/* Az első oszlop (nevek) rögzítése görgetésnél */
-.sticky-col {
-    position: sticky;
-    left: 0;
-    background-color: #fff;
-    z-index: 1;
-    font-weight: bold;
+.fejlec-cim {
+    font-size: 28px;
     text-align: left;
-    padding-left: 10px;
-    box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    letter-spacing: 0.08em;
 }
 
-/* Mobil optimalizálás */
-@media (max-width: 600px) {
-    table {
-        /* Mobilon még kisebb alapméret, hogy több oszlop látsszon */
-        font-size: 11px;
-    }
-
-    th,
-    td {
-        padding: 6px 2px;
-    }
-
-    .sticky-col {
-        max-width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.jelenleti-panel {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    width: 100%;
+    max-width: 100%;
+    min-height: calc(100vh - 160px);
+    height: auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
+
+.jelenleti-panel-betet {
+    background-color: #ffffff;
+}
+
+/* KÜLSŐ TÁROLÓ (A szürke réteg) */
+.dashboard-card {
+  width: 90%;
+  max-width: 800px;
+  background-color: #e9eaee; /* Halványszürke háttér */
+  border-radius: 30px; /* Nagy, lágy lekerekítés */
+  padding: 30px;
+  position: relative; /* Pozicionálási viszonyítási pont */
+  overflow: visible; /* Fontos! Engedjük ki a tartalmat */
+}
+
+/* CÍM ÉS IKON */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Hely a tartalom előtt */
+}
+
+.title-group h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+
+.title-group p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.calendar-icon {
+  background-color: #fff;
+  color: #222;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* BELSŐ, ELTOLT TÁROLÓ (A fehér réteg) */
+.content-layer {
+  background-color: #fff; /* Tiszta fehér */
+  border-radius: 25px;
+  padding: 25px;
+  
+  /* --- AZ ELTOLÁS TRÜKK --- */
+  position: relative;
+  /* Lefelé toljuk 50px-el, hogy túllógjon a külső tárolón */
+  top: 50px; 
+  /* Hogy ne legyen lyuk felül, negatív margóval "visszahúzzuk" a helyet */
+  margin-bottom: 50px; 
+}
+
+/* Helyőrző az idővonalnak (csak a vizuális ellenőrzéshez) */
+.timeline-placeholder {
+  color: #aaa;
+  font-style: italic;
+  text-align: center;
+  height: 250px; /* Fix magasság a demóhoz */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #eee; /* Csak hogy lásd a határait */
+}
+
+
+/* 
+.jelenleti-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+} */
+
+
+
+.honap-nav {
+    color: #2d2d2d;
+    text-decoration: none;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.honap-nav:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.schedule-container {
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
